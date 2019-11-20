@@ -1,0 +1,39 @@
+{% load static %}
+
+<nav class="navbar site-nav navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'index' %}"><img class="med-icon" src="{% static 'img/logo.svg' %}"
+                alt="logo"> <b>
+                Discover</b></a>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li {% if 'posts' in request.path %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+                    <a class="nav-link" href="{% url 'posts' %}"><img class="small-icon" src="{% static 'img/posts.svg' %}" alt="posts">
+                        Posts<span class="sr-only">(current)</span></a>
+                </li>
+                <li {% if 'add-post' in request.path %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+                    <a class="nav-link" href="{% url 'add-post' %}"><img class="small-icon" src="{% static 'img/addPost.svg' %}"
+                            alt="add_post"> Add
+                        Post</a>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav">
+                <li {% if 'signup' in request.path %} class="nav-item active" {% else %} class="nav-item" {% endif %}><a
+                        href="#" class="nav-link"><img class="small-icon" src="{% static 'img/signup.svg' %}"
+                            alt="signup"> Signup</a> </li>
+                <!-- <li class="nav-item"><a href="#" class="nav-link"><img class="small-icon" src="./user.svg" alt="signup"> User</a> </li> -->
+                <li {% if 'login' in request.path %} class="nav-item active" {% else %} class="nav-item" {% endif %}><a
+                        href="#" class="nav-link"><img class="small-icon" src="{% static 'img/login.svg' %}"
+                            alt="login">
+                        Login</a></li>
+                <!-- <li class="nav-item"><a href="#" class="nav-link"><img class="small-icon" src="./logout.svg" alt="signup"> Logout</a> </li> -->
+            </ul>
+        </div>
+    </div>
+</nav>

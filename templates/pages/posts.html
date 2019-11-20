@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+<section class="explore my-5">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                <li class="breadcrumb-item active">Posts</li>
+              
+            </ol>
+        </nav>
+        {% if posts %}
+        <div class="row">
+            {% for post in posts %}
+            <a href="{% url 'post' post.id %}" class="col-12 col-lg-4 col-xl-4  col-sm-12 col-md-6 my-3 explore__block">
+                <div class="">
+                    <div class="card bg-dark text-white">
+                        <img src="{% static 'img/cardImg.jpg' %}" class="card-img" alt="...">
+                        <div class="card-img-overlay">
+                            <h5 class="card-title">{{post.post_author.username}}</h5>
+                            <p class="card-text"><small>{{post.post_content}}</small> </p>
+
+                            <p class="card-text"> <span class="mr-3"><img src="{% static 'img/love.svg' %}"
+                                        class="small-icon" alt="like"> {{post.post_likes}}</span>
+                                <span> <img src="{% static 'img/comments.svg' %}" alt="" class="small-icon">
+                                    {{post.post_date | date:"D d M Y" }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+            {% else %}
+            <h5 class="text-center col-12">No post's to show !</h5>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

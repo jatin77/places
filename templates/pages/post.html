@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+<section class="explore my-3">
+    <div class="container">
+
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'posts' %}">Posts</a></li>
+                <li class="breadcrumb-item active" aria-current="post">{{post.post_content | truncatechars:20}}</li>
+            </ol>
+        </nav>
+
+        {% if post %}
+        <div class="row">
+            <div class="col-12  mx-auto col-lg-8 col-xl-8 ">
+                <div class="card ">
+                    <img src="{% static 'img/cardImg.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{post.post_author.username}}</h5>
+                        <p class="card-text text-secondary">{{post.post_content}}</p>
+                        <div class="card-text justify-content-between d-flex">
+                            <div>
+                                <small> <img src="{% static 'img/love.svg' %}" class="small-icon" alt="like">
+                                    <span class="mr-5">{{post.post_likes}}</span>
+                                    <img src="{% static 'img/comments.svg' %}" alt="" class="small-icon">
+                                    {{comments.count}}
+                                </small>
+                            </div>
+                            <div>
+                                <p class="card-text text-right">
+                                    <small> <img src="{% static 'img/time.svg' %}" alt="" class="small-icon mr-2 ">
+                                        <span class="text-muted">{{post.post_date | date:"D d M Y" }}</span>
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <h5 class="text-center col-12">No post to show !</h5>
+            {% endif %}
+        </div>
+        <div class="row">
+            {% if comments %}
+            {% for comment in comments %}
+            <div class="col-12  mx-auto col-lg-8 col-xl-8 my-2">
+                <div class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <p class="">{{comment.comment_author.username}}</p>
+                        <p><img src="{% static 'img/write.svg' %}" alt="" class="mr-2 small-icon"><small
+                                class="text-muted">{{comment.comment_date | date:"d M y P" }}</small></p>
+                    </div>
+                    <p class="mb-1 text-muted">{{comment.comment_content}}</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="text-center col-12 my-2">
+                No comments to show
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
