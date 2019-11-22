@@ -1,3 +1,14 @@
+a{
+    text-decoration: none !important;
+}
+.btn{
+    outline: none !important;
+    border:none !important;
+}
+.btn:focus, .btn:active{
+    outline:none !important;
+    border:none !important;
+}
 .med-icon{
     width:45px;
 }
@@ -13,7 +24,12 @@
 .landing{
     padding:150px 0;
 }
-
+.dashboard-landing{
+    padding:50px 0;
+}
+.small-container{
+    max-width:550px;
+}
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 

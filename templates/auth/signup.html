@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Discover | Sign up{% endblock %}
+
+{% load static %}
+{% block content %}
+<div class="container">
+    <h1 class="text-center my-4"><img class="big-icon" src="{% static 'img/signup.svg' %}" />Sign up</h1>
+    <!-- alerts -->
+    {% include 'partials/_alerts.html' %}
+    <form action="user/" method="post">
+        {% csrf_token %}
+        <div class="form-row ">
+            <div class="col-xs-12 col-sm-6 my-2">
+                <label for="username">Username</label>
+                <input name="username" type="text" class="form-control" id="username" placeholder="Enter username">
+            </div>
+            <div class="col-xs-12 col-sm-6 my-2">
+                <label for="email">Email</label>
+                <input name="email" type="text" class="form-control" id="email" placeholder="Enter email" required>
+            </div>
+
+        </div>
+        <div class="form-row ">
+            <div class="col-xs-12 col-sm-6 my-2">
+                <label for="last_name">last name</label>
+                <input name="last_name" type="text" class="form-control" id="lastname" placeholder="Enter last name">
+            </div>
+            <div class="col-xs-12 col-sm-6 my-2">
+                <label for="first_name">First name</label>
+                <input name="first_name" type="text" class="form-control" id="firstname" placeholder="Enter first name">
+            </div>
+        </div>
+        <div class="form-row ">
+            <div class="col-xs-12 col-sm-6 my-2">
+                <label for="password1">Password</label>
+                <input name="password1" type="password" class="form-control" id="password1" placeholder="Enter password"
+                    required>
+            </div>
+            <div class="col-xs-12 col-sm-6 my-2">
+                <label for="password2">Confirm password</label>
+                <input name="password2" type="password" class="form-control" id="password2"
+                    placeholder="Confirm password" required>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button type="submit" class="btn bg-dark text-white mb-2">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

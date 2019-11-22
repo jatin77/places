@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Post
 from datetime import datetime
 from django.shortcuts import redirect
-
+from django.contrib import messages
 
 def newPostAdded(request): 
     if request.method == 'POST':         
@@ -14,6 +14,8 @@ def newPostAdded(request):
         post=Post(post_content=post_content, post_author=post_author, post_likes=post_likes)
         if (post_content != ""):
             post.save()
+            messages.success(request,'Your post has been added.')
             return redirect('posts')
         else:
             return redirect('index')
+    return
