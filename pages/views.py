@@ -48,8 +48,8 @@ def addComment(request):
     if request.POST:
         if request.user.is_authenticated:
             comment_content=request.POST['comment']
+            post_id=request.POST['post_id']
             if comment_content!= "":
-                post_id=request.POST['post_id']
                 on_post=Post.objects.get(pk=post_id)
                 comment_content=request.POST['comment']
                 comment_author=request.user
