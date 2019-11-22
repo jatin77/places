@@ -18,5 +18,7 @@ def newPostAdded(request):
             return redirect('posts')
         else:
             messages.error(request,'Empty field.')
-            return redirect('posts')
-    return
+            return redirect('add-post')
+    else:
+        return
+        redirect('index')
