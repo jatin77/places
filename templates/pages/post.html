@@ -50,6 +50,8 @@
         </div>
         {% if user.is_authenticated %}
         <div class="mx-auto my-2" style="max-width: 728px">
+            <!-- alerts -->
+            {% include 'partials/_alerts.html' %}
             <form action="{% url 'add-comment' %}" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="post_id" value="{{post.id}}">

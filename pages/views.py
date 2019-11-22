@@ -5,7 +5,7 @@ from posts.models import Post
 from comments.models import Comment
 from django.shortcuts import redirect
 from django.core.paginator import Paginator
-
+from django.contrib import messages
 
 def index(request):
     posts=Post.objects.order_by('-post_date')[:3]
@@ -56,6 +56,9 @@ def addComment(request):
                 comment=Comment(on_post=on_post, comment_content=comment_content, comment_author=comment_author)
 
                 comment.save()
+                return redirect('/post/'+post_id+'/')
+            else:
+                messages.error(request,'Empty fields')
                 return redirect('/post/'+post_id+'/')
 
 def liked(request):
