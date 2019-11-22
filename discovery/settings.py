@@ -15,7 +15,7 @@ SECRET_KEY = '5kwji(r#2le69eu=&t=n(d=y1!qx94&ip3vr95y@g%vvrz5&%&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['discoveri.herokuapp.com']
 
 
 # Application definition
